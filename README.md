@@ -53,3 +53,130 @@ These commands will install the plugin from npm. You can find this plugin up on 
 
 The `Env` object provides a way to access the directories exposed by the Environment object.
 
+## Methods
+
+Currently this plugin provides Four methods:
+
+- getExternalStorageState
+- isExternalStorageEmulated
+- isExternalStorageRemovable
+- getDirectory
+
+### getExternalStorageState
+
+**Parameters:** 
+
+- **successCallback**: Callback that returns the string value of the External Storage State. See https://developer.android.com/reference/android/os/Environment.html#getExternalStorageState() for possible result values.
+- **errorCallback:** Callback that executes if an error occurs during the call.
+
+### Example
+
+    if (navigator.Env) {
+        console.log("Env object in navigator");
+        navigator.Env.getExternalStorageState(
+            function (state) {
+                if (state) {
+                    console.log("External storage state: " + state);
+                }
+            },
+            function (error) {
+                console.log("getExternalStorageState error: " + error);
+            }
+        );
+    } else {
+        console.log("Plugin error: Env plugin not found (is it installed?)");
+    }
+
+### isExternalStorageEmulated
+
+**Parameters:** 
+
+- **successCallback**: Callback that returns "true" if the external storage is emulated.
+- **errorCallback:** Callback that executes if an error occurs during the call.
+
+### Example
+
+    if (navigator.Env) {
+        console.log("Env object in navigator");
+        navigator.Env.isExternalStorageEmulated(
+            function (result) {
+                if (result) {
+                    console.log("isExternalStorageEmulated returns: " + result);
+                }
+            },
+            function (error) {
+                console.log("isExternalStorageEmulated error: " + error);
+            }
+        );
+    } else {
+        console.log("Plugin error: Env plugin not found (is it installed?)");
+    }
+
+### isExternalStorageRemovable
+
+**Parameters:** 
+
+- **successCallback**: Callback that returns "true" if the external storage is removable.
+- **errorCallback:** Callback that executes if an error occurs during the call.
+
+### Example
+
+    if (navigator.Env) {
+        console.log("Env object in navigator");
+        navigator.Env.isExternalStorageRemovable(
+            function (result) {
+                if (result) {
+                    console.log("isExternalStorageRemovable returns: " + result);
+                }
+            },
+            function (error) {
+                console.log("isExternalStorageRemovable error: " + error);
+            }
+        );
+    } else {
+        console.log("Plugin error: Env plugin not found (is it installed?)");
+    }
+
+### getDirectory
+
+**Parameters:** 
+
+- **directory**: (string) Special directory to look up (see "Directories" below).
+- **successCallback**: Callback that returns the path of the specified directory.
+- **errorCallback:** Callback that executes if an error occurs during the call.
+
+### Directories
+
+Following are valid string values for the **directory** parameter above:
+
+| String value | Android directory | 
+|:-:|:-:|
+| "Alarms" | DIRECTORY_ALARMS |
+| "DCIM" | DIRECTORY_DCIM |
+| "Documents" | DIRECTORY_DOCUMENTS |
+| "Downloads" | DIRECTORY_DOWNLOADS |
+| "Movies" | DIRECTORY_MOVIES |
+| "Music" | DIRECTORY_MUSIC |
+| "Notifications" | DIRECTORY_NOTIFICATIONS |
+| "Pictures" | DIRECTORY_PICTURES |
+| "Podcasts" | DIRECTORY_PODCASTS |
+| "Ringtones" | DIRECTORY_RINGTONES |
+
+### Example
+
+    if (navigator.Env) {
+        console.log("Env object in navigator");
+        navigator.Env.getDirectory(
+            function (path) {
+                if (path) {
+                    console.log("getDirectory returns: " + path);
+                }
+            },
+            function (error) {
+                console.log("getDirectory error: " + error);
+            }
+        );
+    } else {
+        console.log("Plugin error: Env plugin not found (is it installed?)");
+    }
+
