@@ -166,10 +166,10 @@ Following are valid string values for the **directory** parameter above:
 
     if (navigator.Env) {
         console.log("Env object in navigator");
-        navigator.Env.getDirectory(
+        navigator.Env.getDirectory("Documents", 
             function (path) {
                 if (path) {
-                    console.log("getDirectory returns: " + path);
+                    console.log("getDirectory(Documents) returns: " + path);
                 }
             },
             function (error) {
