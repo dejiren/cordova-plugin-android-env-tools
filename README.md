@@ -29,7 +29,7 @@ This plugin defines a global `Environment` object, which provides access to the 
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
-        console.log(navigator.Environment);
+        console.log(navigator.Env);
     }
 
 ## Installation
@@ -49,45 +49,7 @@ These commands will install the plugin from npm. You can find this plugin up on 
 
 - Android
 
-# Environment
+# Env
 
-The `Environment` object provides a way to access the directories exposed by the Environment object.
+The `Env` object provides a way to access the directories exposed by the Environment object.
 
-## Fields
-
-Currently this plugin provides the following fields exposed by the Environment object.
-
-- DIRECTORY_ALARMS
-- DIRECTORY_DCIM
-- DIRECTORY_DOCUMENTS
-- DIRECTORY_DOWNLOADS
-- DIRECTORY_MOVIES
-- DIRECTORY_MUSIC
-- DIRECTORY_NOTIFICATIONS
-- DIRECTORY_PICTURES
-- DIRECTORY_PODCASTS
-- DIRECTORY_RINGTONES
-
-For more information about these fields, please refer to the Android Developer reference topic for the Environment object here: https://developer.android.com/reference/android/os/Environment.html
-
-### Note
-
-The `cordova-plugin-file` plugin also exposes a `Documents` directory, which is a subdirectory of the Cordova application's directory (`cordova.file.applicationDirectory`). `DIRECTORY_DOCUMENTS` is the general, standard directory for documents created by the user.
-    
-### Example
-
-    if (navigator.Environment) {
-        console.log("Environment object in navigator...");
-        console.log("Alarms directory: " + Environment.DIRECTORY_ALARMS);
-        console.log("DCIM directory: " + Environment.DIRECTORY_DCIM);
-        console.log("Documents directory: " + Environment.DIRECTORY_DOCUMENTS);
-        console.log("Downloads directory: " + Environment.DIRECTORY_DOWNLOADS);
-        console.log("Movies directory: " + Environment.DIRECTORY_MOVIES);
-        console.log("Music directory: " + Environment.DIRECTORY_MUSIC);
-        console.log("Notifications directory: " + Environment.DIRECTORY_NOTIFICATIONS);
-        console.log("Pictures directory: " + Environment.DIRECTORY_PICTURES);
-        console.log("Podcasts directory: " + Environment.DIRECTORY_PODCASTS);
-        console.log("Ringtones directory: " + Environment.DIRECTORY_RINGTONES);
-    } else {
-        console.log("Plugin error: Environment plugin not found (is it installed?)");
-    }
