@@ -77,7 +77,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
             if (navigator.Env) {
                 navigator.Env.getExternalStorageState(
                     function (result) {
-                        console.log("getExternalStorageStateTest() - value returned" + result);
+                        logMessage("getExternalStorageStateTest() - value returned: " + result);
                     },
                     function (error) {
                         logMessage(error);
@@ -94,7 +94,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
             if (navigator.Env) {
                 navigator.Env.isExternalStorageEmulated(
                     function (result) {
-                        console.log("isExternalStorageEmulatedTest() - value returned" + result);
+                        logMessage("isExternalStorageEmulatedTest() - value returned: " + result);
                     },
                     function (error) {
                         logMessage(error);
@@ -111,7 +111,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
             if (navigator.Env) {
                 navigator.Env.isExternalStorageRemovable(
                     function (result) {
-                        console.log("isExternalStorageRemovableTest() - value returned" + result);
+                        logMessage("isExternalStorageRemovableTest() - value returned: " + result);
                     },
                     function (error) {
                         logMessage(error);
@@ -119,6 +119,85 @@ exports.defineManualTests = function (contentEl, createActionButton) {
                 );
             } else {
                 console.log("Plugin error: Environment plugin not found (is it installed?)");
+            }
+        },
+        
+        getDirectoryTest = function () {
+            clearLog();
+            console.log("getDirectoryTest()");
+            if (navigator.Env) {
+                navigator.Env.getDirectory("Alarms",
+                    function (result) {
+                        logMessage("Alarms directory: " + result);
+                    },
+                    function (error) {
+                        logMessage(error);
+                    });
+                navigator.Env.getDirectory("DCIM",
+                    function (result) {
+                        logMessage("DCIM directory: " + result);
+                    },
+                    function (error) {
+                        logMessage(error);
+                    });
+                navigator.Env.getDirectory("Documents",
+                    function (result) {
+                        logMessage("Documents directory: " + result);
+                    },
+                    function (error) {
+                        logMessage(error);
+                    });
+                navigator.Env.getDirectory("Downloads",
+                    function (result) {
+                        logMessage("Downloads directory: " + result);
+                    },
+                    function (error) {
+                        logMessage(error);
+                    });
+                navigator.Env.getDirectory("Movies",
+                    function (result) {
+                        logMessage("Movies directory: " + result);
+                    },
+                    function (error) {
+                        logMessage(error);
+                    });
+                navigator.Env.getDirectory("Music",
+                    function (result) {
+                        logMessage("Music directory: " + result);
+                    },
+                    function (error) {
+                        logMessage(error);
+                    });
+                navigator.Env.getDirectory("Notifications",
+                    function (result) {
+                        logMessage("Notifications directory: " + result);
+                    },
+                    function (error) {
+                        logMessage(error);
+                    });
+                navigator.Env.getDirectory("Pictures",
+                    function (result) {
+                        logMessage("Pictures directory: " + result);
+                    },
+                    function (error) {
+                        logMessage(error);
+                    });
+                navigator.Env.getDirectory("Podcasts",
+                    function (result) {
+                        logMessage("Podcasts directory: " + result);
+                    },
+                    function (error) {
+                        logMessage(error);
+                    });
+                navigator.Env.getDirectory("Ringtones",
+                    function (result) {
+                        logMessage("Ringtones directory: " + result);
+                    },
+                    function (error) {
+                        logMessage(error);
+                    });
+            } else {
+                console.log("PLugin error: Environment plugin not found (is is installed?)");
             }
         },
         
@@ -138,4 +217,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
         isExternalStorageRemovableTest();
     }, "cdv_storage_removable");
 
+    createActionButton('getDirectories', function () {
+        getDirectoryTest();
+    }, "cdv_directories");
 };

@@ -19,8 +19,8 @@
     <!-- android -->
     <platform name="android">
         <config-file target="config.xml" parent="/*">
-            <feature name="Environment">
-                <param name="android-package" value="org.adaptit.cordova.environment.Environment"/>
+            <feature name="Env">
+                <param name="android-package" value="org.adaptit.cordova.environment.Env"/>
             </feature>
         </config-file>
         
