@@ -17,7 +17,7 @@
   "cordova": {
     "id": "cordova-plugin-env",
     "platforms": [
-        "android"
+      "android"
     ]
   },
   "main": "env.js",
@@ -27,6 +27,7 @@
   },
   "scripts": {
     "test": "npm run jshint",
+    "version": "sync-cordova-xml package.json plugin.xml --output plugin.xml && git add plugin.xml",
     "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
   },
   "repository": {
@@ -37,11 +38,12 @@
   "engines": {
     "cordovaDependencies": {
       "2.0.0": {
-          "cordova": ">100"
+        "cordova": ">100"
       }
-    }  
+    }
   },
   "devDependencies": {
-    "jshint": "^2.6.0"  
+    "jshint": "^2.6.0",
+    "sync-cordova-xml": "^0.4.0"
   }
 }
