@@ -48,7 +48,19 @@ var Env = {
     },
 
 /**
- * Returns the path to the specified special directory
+ * Returns the full path to the specified special directory. Note that this API
+ * is deprecated in Android API 29.
+ *
+ * @param {DOMString} special directory to look up
+ * @param {Function} successCB
+ * @param {Function} errorCB
+ */
+    getExternalStoragePublicDirectory: function (path, successCB, errorCB) {
+        exec(successCB, errorCB, 'Env', 'getExternalStoragePublicDirectory', [path]);
+    },
+    
+/**
+ * Returns the directory name of the specified special directory
  *
  * @param {DOMString} special directory to look up
  * @param {Function} successCB

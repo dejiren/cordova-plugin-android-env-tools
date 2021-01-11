@@ -31,6 +31,7 @@ public class Env extends CordovaPlugin {
     public static final String GETEXTERNALSTORAGESTATE = "getExternalStorageState";
     public static final String EXTERNALSTORAGEEMULATED = "isExternalStorageEmulated";
     public static final String EXTERNALSTORAGEREMOVABLE = "isExternalStorageRemovable";
+    public static final String GETEXTERNALSTORAGEPUBLICDIRECTORY = "getExternalStoragePublicDirectory";
     public static final String GETDIRECTORY = "getDirectory";
     public static final String DIRECTORY_ALARMS = "Alarms";
     public static final String DIRECTORY_DCIM = "DCIM";
@@ -86,6 +87,19 @@ public class Env extends CordovaPlugin {
                     new Runnable() {
                         public void run() {
                             final String results = getDirectory(strDir);
+                            System.out.println("results: " + results.toString());
+                            callbackContext.success(results);
+                        }
+                    }
+                );
+                return true;
+            } else if (action.equals(GETEXTERNALSTORAGEPUBLICDIRECTORY)) {
+                final String strDir = args.getString(0);
+                System.out.println("WARNING: getExternalStoragePublidDirectory() is deprecated as of API level 29.");
+                cordova.getThreadPool().execute(
+                    new Runnable() {
+                        public void run() {
+                            final String results = String.valueOf(Environment.getExternalStoragePublicDirectory(strDir));
                             System.out.println("results: " + results.toString());
                             callbackContext.success(results);
                         }

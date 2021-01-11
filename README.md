@@ -142,7 +142,7 @@ Currently this plugin provides Four methods:
 **Parameters:** 
 
 - **directory**: (string) Special directory to look up (see "Directories" below).
-- **successCallback**: Callback that returns the path of the specified directory.
+- **successCallback**: Callback that returns the string name of the specified directory on this device.
 - **errorCallback:** Callback that executes if an error occurs during the call.
 
 ### Directories
@@ -180,3 +180,41 @@ Following are valid string values for the **directory** parameter above:
         console.log("Plugin error: Env plugin not found (is it installed?)");
     }
 
+### getExternalStoragePublicDirectory
+
+**DEPRECATION WARNING**
+This method has been deprecated on Android API 29 and later. 
+
+**Parameters:** 
+
+- **directory**: (string) Directory to look up. This needs to be one of the strings returned by the getDirectory() call above.
+- **successCallback**: Callback that returns the full path string of the specified directory on this device.
+- **errorCallback:** Callback that executes if an error occurs during the call.
+
+
+### Example
+
+    if (navigator.Env) {
+        console.log("Env object in navigator");
+        // attempt to get Environment.DIRECTORY_DOWNLOADS
+        navigator.Env.getDirectory("Downloads", 
+            function (dirName) {
+                if (dirName) {
+                    console.log("getDirectory(Downloads) returns: " + dirName);
+                    // success -- now try to get the full path for the shared Downloads directory
+                    navigator.Env.getExternalStoragePublicDirectory(dirName,
+                        function(fullPath) {
+                            console.log("getExternalStoragePublicDirectory(Downloads) returns: " + fullPath);
+                        }, function (error) {
+                            console.log("getExternalStoragePublicDirectory error: " + error);
+                        }
+                    );
+                }
+            },
+            function (error) {
+                console.log("getDirectory error: " + error);
+            }
+        );
+    } else {
+        console.log("Plugin error: Env plugin not found (is it installed?)");
+    }
