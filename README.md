@@ -23,7 +23,7 @@
 |:-:|:-:|:-:|
 | [![npm](https://img.shields.io/npm/dm/cordova-plugin-env.svg)](https://www.npmjs.com/package/cordova-plugin-env) | [![Build Status](https://travis-ci.org/adapt-it/cordova-env.svg?branch=master)](https://travis-ci.org/adapt-it/cordova-env) | [![Known Vulnerabilities](https://snyk.io/test/github/adapt-it/cordova-env/badge.svg)](https://snyk.io/test/github/adapt-it/cordova-env) |
 
-A small Cordova plugin that exposes Android's Environment object directories.
+A small Cordova plugin that exposes Android's [Environment object](https://developer.android.com/reference/android/os/Environment) directories and some methods (not complete).
 
 This plugin defines a global `Environment` object, which provides access to the common directories available on Android's Environment object. The `Environment` object is available from the `navigator` object after the `deviceready` event fires.
 
@@ -61,6 +61,7 @@ Currently this plugin provides Four methods:
 - isExternalStorageEmulated
 - isExternalStorageRemovable
 - getDirectory
+- getExternalStoragePublicDirectory (deprecated in Android API 29, but still available)
 
 ### getExternalStorageState
 
