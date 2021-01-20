@@ -32,6 +32,8 @@ public class Env extends CordovaPlugin {
     public static final String EXTERNALSTORAGEEMULATED = "isExternalStorageEmulated";
     public static final String EXTERNALSTORAGEREMOVABLE = "isExternalStorageRemovable";
     public static final String GETEXTERNALSTORAGEPUBLICDIRECTORY = "getExternalStoragePublicDirectory";
+    public static final String EXTERNALSTORAGEMANAGER = "isExternalStorageManager";
+    
     public static final String GETDIRECTORY = "getDirectory";
     public static final String DIRECTORY_ALARMS = "Alarms";
     public static final String DIRECTORY_DCIM = "DCIM";
@@ -100,6 +102,17 @@ public class Env extends CordovaPlugin {
                     new Runnable() {
                         public void run() {
                             final String results = String.valueOf(Environment.getExternalStoragePublicDirectory(strDir));
+                            System.out.println("results: " + results.toString());
+                            callbackContext.success(results);
+                        }
+                    }
+                );
+                return true;
+            } else if (action.equals(EXTERNALSTORAGEMANAGER)) {
+                cordova.getThreadPool().execute(
+                    new Runnable() {
+                        public void run() {
+                            final String results = String.valueOf(Environment.isExternalStorageManager());
                             System.out.println("results: " + results.toString());
                             callbackContext.success(results);
                         }

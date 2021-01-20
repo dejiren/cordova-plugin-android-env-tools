@@ -46,7 +46,21 @@ var Env = {
     isExternalStorageRemovable: function (successCB, errorCB) {
         exec(successCB, errorCB, "Env", "isExternalStorageRemovable", []);
     },
-
+/**
+* Returns whether the calling app has All Files Access on the primary shared / external storage media.
+*
+* @param {function} successCB
+* @param {function} errorCB
+*
+* @return Object.value {String}: "true" if the calling app has All Files Access.
+*
+* Example
+*    Env.isExternalStorageManager(function(isRStorageManager) {console.log(isStorageManager);},
+*                      function(error) {console.log(error);});
+*/
+    isExternalStorageManager: function (successCB, errorCB) {
+        exec(successCB, errorCB, "Env", "isExternalStorageManager", []);
+    },
 /**
  * Returns the full path to the specified special directory. Note that this API
  * is deprecated in Android API 29.

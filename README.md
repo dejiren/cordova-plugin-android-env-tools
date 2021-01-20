@@ -23,9 +23,9 @@
 |:-:|:-:|:-:|
 | [![npm](https://img.shields.io/npm/dm/cordova-plugin-env.svg)](https://www.npmjs.com/package/cordova-plugin-env) | [![Build Status](https://travis-ci.org/adapt-it/cordova-env.svg?branch=master)](https://travis-ci.org/adapt-it/cordova-env) | [![Known Vulnerabilities](https://snyk.io/test/github/adapt-it/cordova-env/badge.svg)](https://snyk.io/test/github/adapt-it/cordova-env) |
 
-A small Cordova plugin that exposes Android's [Environment object](https://developer.android.com/reference/android/os/Environment) directories and some methods (not complete).
+A small Cordova plugin that exposes Android's [Environment](https://developer.android.com/reference/android/os/Environment) object. 
 
-This plugin defines a global `Environment` object, which provides access to the common directories available on Android's Environment object. The `Environment` object is available from the `navigator` object after the `deviceready` event fires.
+This plugin defines a global `Environment` object, which provides access to the common directories and helper methods available on Android's Environment object. The `Environment` object is available from the `navigator` object after the `deviceready` event fires.
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
@@ -51,42 +51,18 @@ These commands will install the plugin from npm. You can find this plugin up on 
 
 # Env
 
-The `Env` object provides a way to access the directories exposed by the Environment object.
+The `Env` object provides a way to access the directories -- and some helper methods -- exposed by the Android [Environment](https://developer.android.com/reference/android/os/Environment) object.
 
 ## Methods
 
-Currently this plugin provides Four methods:
+Currently this plugin provides the following methods:
 
-- getExternalStorageState
 - isExternalStorageEmulated
 - isExternalStorageRemovable
+- isExternalStorageManager
+- getExternalStorageState
 - getDirectory
 - getExternalStoragePublicDirectory (deprecated in Android API 29, but still available)
-
-### getExternalStorageState
-
-**Parameters:** 
-
-- **successCallback**: Callback that returns the string value of the External Storage State. See https://developer.android.com/reference/android/os/Environment.html#getExternalStorageState() for possible result values.
-- **errorCallback:** Callback that executes if an error occurs during the call.
-
-### Example
-
-    if (navigator.Env) {
-        console.log("Env object in navigator");
-        navigator.Env.getExternalStorageState(
-            function (state) {
-                if (state) {
-                    console.log("External storage state: " + state);
-                }
-            },
-            function (error) {
-                console.log("getExternalStorageState error: " + error);
-            }
-        );
-    } else {
-        console.log("Plugin error: Env plugin not found (is it installed?)");
-    }
 
 ### isExternalStorageEmulated
 
@@ -132,6 +108,56 @@ Currently this plugin provides Four methods:
             },
             function (error) {
                 console.log("isExternalStorageRemovable error: " + error);
+            }
+        );
+    } else {
+        console.log("Plugin error: Env plugin not found (is it installed?)");
+    }
+
+### isExternalStorageManager
+
+**Parameters:** 
+
+- **successCallback**: Callback that returns "true" if the app has [All Files Access](https://developer.android.com/reference/android/provider/Settings?hl=en#ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION).
+- **errorCallback:** Callback that executes if an error occurs during the call.
+
+### Example
+
+    if (navigator.Env) {
+        console.log("Env object in navigator");
+        navigator.Env.isExternalStorageManager(
+            function (result) {
+                if (result) {
+                    console.log("isExternalStorageManager returns: " + result);
+                }
+            },
+            function (error) {
+                console.log("isExternalStorageRemovable error: " + error);
+            }
+        );
+    } else {
+        console.log("Plugin error: Env plugin not found (is it installed?)");
+    }
+
+### getExternalStorageState
+
+**Parameters:** 
+
+- **successCallback**: Callback that returns the string value of the External Storage State. See https://developer.android.com/reference/android/os/Environment.html#getExternalStorageState() for possible result values.
+- **errorCallback:** Callback that executes if an error occurs during the call.
+
+### Example
+
+    if (navigator.Env) {
+        console.log("Env object in navigator");
+        navigator.Env.getExternalStorageState(
+            function (state) {
+                if (state) {
+                    console.log("External storage state: " + state);
+                }
+            },
+            function (error) {
+                console.log("getExternalStorageState error: " + error);
             }
         );
     } else {
