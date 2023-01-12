@@ -104,7 +104,7 @@ public class MediaScannerPlugin extends CordovaPlugin implements MediaScannerCon
     public void onScanCompleted(String s, Uri uri) {
         mMediaScannerConnection.disconnect();
         String successMsg = "scanFile Success";
-        if(myCallbackContext) {
+        if(myCallbackContext != null ) {
             myCallbackContext.success(successMsg);
         }
     }
