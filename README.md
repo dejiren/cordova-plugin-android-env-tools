@@ -25,7 +25,7 @@ From the Command line:
 
 
 ## From 
-以下の4本を１本にまとめています。
+以下の4本をまとめています。
 ### cordova-plugin-android-notification-manager
 https://git.scat.su/external/cordova-plugin-android-notification-manager
 
@@ -39,15 +39,20 @@ https://github.com/begrossi/MediaScannerPlugin
 https://github.com/NeoLSN/cordova-plugin-android-permissions
 
 
-## 修正点
-### 呼ぶ時に、cordova.plugins.androidxxxに統一
-### 共通index.d.tsの追加により、typescriptの問題解消
-### permissionsのオブジェクト名を変更して、システムのコンフリクトを解消
 
-## index.d.tsの作成について
+## 修正点　　
+
+ - 呼ぶ時に、cordova.plugins.androidxxxに統一
+ - 共通index.d.tsの追加により、typescriptの問題解消
+ - permissionsのオブジェクト名を変更して、システムのコンフリクトを解消
+
+
+
+## index.d.tsの作成について　　
+
 新たな修正が発生また新たな機能を導入するとき、以下の手順でコマンドを実行して、
 作成されたtypes/xxxx.d.tsの内容により、index.d.tsを修正
 
-### npm install 
-### npx tsc
+ - npm install 
+ - npx tsc
 
