@@ -1,11 +1,11 @@
 {
-  "name": "cordova-plugin-env-tests",
+  "name": "cordova-plugin-android-env-tools-tests",
   "version": "1.0.0",
   "description": "",
   "cordova": {
-    "id": "cordova-plugin-env-tests",
+    "id": "cordova-plugin-android-env-tools-tests",
     "platforms": [
-        "android"
+      "android"
     ]
   },
   "keywords": [

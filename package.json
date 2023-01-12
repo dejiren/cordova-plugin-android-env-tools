@@ -1,7 +1,7 @@
 {
-  "name": "cordova-plugin-env",
-  "version": "1.2.0",
-  "description": "Cordova Environment plugin",
+  "name": "cordova-plugin-android-env-tools",
+  "version": "1.0.0",
+  "description": "Cordova android Environment Tools plugin",
   "keywords": [
     "cordova",
     "ecosystem:cordova",
@@ -9,30 +9,23 @@
     "plugin",
     "environment"
   ],
-  "homepage": "https://github.com/adapt-it/cordova-env",
+  "homepage": "",
   "bugs": {
-    "url": "https://github.com/adapt-it/cordova-env/issues"
+    "url": ""
   },
-  "license": "Apache-2.0",
+  "types": "./types/index.d.ts",
+  "license": "Mit-2.0",
   "cordova": {
-    "id": "cordova-plugin-env",
+    "id": "cordova-plugin-android-env-tools",
     "platforms": [
       "android"
     ]
   },
-  "main": "env.js",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "npm run jshint",
-    "version": "sync-cordova-xml package.json plugin.xml --output plugin.xml && git add plugin.xml",
-    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
-  },
+  "directories": {},
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/adapt-it/cordova-env.git"
+    "url": "https://github.com/dejiren/cordova-plugin-android-env-tools"
   },
   "author": "Erik Brommers",
   "engines": {
@@ -44,6 +37,7 @@
   },
   "devDependencies": {
     "jshint": "^2.6.0",
-    "sync-cordova-xml": "^0.4.0"
+    "sync-cordova-xml": "^0.4.0",
+    "typescript": "^4.9.4"
   }
 }
