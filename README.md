@@ -40,4 +40,14 @@ https://github.com/NeoLSN/cordova-plugin-android-permissions
 
 
 ## 修正点
-に統一
+### 呼ぶ時に、cordova.plugins.androidxxxに統一
+### 共通index.d.tsの追加により、typescriptの問題解消
+### permissionsのオブジェクト名を変更して、システムのコンフリクトを解消
+
+## index.d.tsの作成について
+新たな修正が発生また新たな機能を導入するとき、以下の手順でコマンドを実行して、
+作成されたtypes/xxxx.d.tsの内容により、index.d.tsを修正
+
+### npm install 
+### npx tsc
+
