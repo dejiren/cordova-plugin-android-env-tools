@@ -5,8 +5,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>cordova-plugin-android-env-tools</name>
     <description>Cordova Android environment tools plugin</description>
-    <author>Lichao sun</author>
-    <license>Apache-2.0</license>
+    <author>Dejiren Team</author>
+    <license>MIT</license>
     <keywords>cordova,ecosystem:cordova,cordova-android,plugin,environment, mediascanner,
         notification setting</keywords>
     <repo>https://github.com/dejiren/cordova-plugin-android-env-tools</repo>
@@ -23,58 +23,41 @@
     <js-module name="Env" src="www/env.js">
         <clobbers target="cordova.plugins.androidEnv" />
     </js-module>
-    <js-module name="NotificationManager" src="www/notificationManager.js">
+    <js-module name="NotificationSettingManager" src="www/notificationSettingManager.js">
         <clobbers target="cordova.plugins.androidNotificationManager" />
     </js-module>
-    <js-module src="www/MediaScannerPlugin.js" name="MediaScannerPlugin">
+    <js-module src="www/MediaScanner.js" name="MediaScanner">
         <clobbers target="cordova.plugins.androidMediaScanner" />
     </js-module>
-    <js-module src="www/permissions.js" name="Permissions">
-        <clobbers target="cordova.plugins.androidPermissions" />
-    </js-module>
-
-
     <platform name="android">
         <!-- env-->
         <config-file target="config.xml" parent="/*">
             <feature name="Env">
-                <param name="android-package" value="org.adaptit.cordova.environment.Env" />
+                <param name="android-package" value="dejiren.cordova.environment.Env" />
             </feature>
         </config-file>
-        <source-file src="src/android/Env.java" target-dir="src/org/adaptit/cordova/Env" />
-        <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        </config-file>
-
-        <!-- Permissions-->
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Permissions">
-                <param name="android-package" value="com.android.plugins.Permissions" />
-            </feature>
-        </config-file>
-
-        <source-file src="src/android/Permissions.java"
-            target-dir="src/com/android/plugins" />
+        <source-file src="src/android/Env.java" target-dir="src/dejiren/cordova/android/tools" />
 
         <!-- NotificationManager-->
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="NotificationManagerPlugin">
-                <param name="android-package" value="su.scat.calltaxi.NotificationManagerPlugin" />
-            </feature>
-        </config-file>
-        <source-file src="src/android/NotificationManagerPlugin.java"
-            target-dir="src/su/scat/calltaxi/" />
-
-        <!-- MediaScannerPlugin-->
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="MediaScannerPlugin">
+            <feature name="NotificationSettingManager">
                 <param name="android-package"
-                    value="br.com.brunogrossi.MediaScannerPlugin.MediaScannerPlugin" />
+                    value="dejiren.cordova.environment.NotificationSettingManager" />
+            </feature>
+        </config-file>
+        <source-file src="src/android/NotificationSettingManager.java"
+            target-dir="src/dejiren/cordova/android/tools" />
+
+        <!-- MediaScanner-->
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="MediaScanner">
+                <param name="android-package"
+                    value="dejiren.cordova.environment.MediaScanner" />
             </feature>
         </config-file>
 
-        <source-file src="src/android/MediaScannerPlugin.java"
-            target-dir="src/br/com/brunogrossi/MediaScannerPlugin" />
+        <source-file src="src/android/MediaScanner.java"
+            target-dir="src/dejiren/cordova/android/tools" />
 
     </platform>
 

@@ -1,10 +1,9 @@
 {
   "name": "cordova-plugin-android-env-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cordova android Environment Tools plugin",
   "keywords": [
     "cordova",
-    "ecosystem:cordova",
     "cordova-android",
     "plugin",
     "environment"
@@ -14,7 +13,7 @@
     "url": ""
   },
   "types": "./types/index.d.ts",
-  "license": "Mit-2.0",
+  "license": "MIT",
   "cordova": {
     "id": "cordova-plugin-android-env-tools",
     "platforms": [
@@ -27,17 +26,14 @@
     "type": "git",
     "url": "https://github.com/dejiren/cordova-plugin-android-env-tools"
   },
-  "author": "Erik Brommers",
+  "author": "dejiren team",
   "engines": {
-    "cordovaDependencies": {
-      "2.0.0": {
-        "cordova": ">100"
-      }
-    }
+    "name": "cordova",
+    "version": ">=3.0.0"
   },
   "devDependencies": {
+    "typescript": "^4.9.4",
     "jshint": "^2.6.0",
-    "sync-cordova-xml": "^0.4.0",
-    "typescript": "^4.9.4"
+    "sync-cordova-xml": "^0.4.0"
   }
 }

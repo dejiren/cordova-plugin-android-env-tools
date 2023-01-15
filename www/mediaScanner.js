@@ -23,22 +23,24 @@ SOFTWARE.
  */
 
 /**
- * MediaScannerPlugin.js
+ * MediaScanner.js
  *
- * @author Bruno E. Grossi <bruno@grossi.com.br>
+ * @author dejiren team
  */
 module.exports = {
-  scanFile: function (fileUri, successCallback, errorCallback) {
-    cordova.exec(
-      function () {
-        successCallback && successCallback();
-      },
-      function (error) {
-        errorCallback && errorCallback(error);
-      },
-      "MediaScannerPlugin",
-      "scanFile",
-      [fileUri]
-    );
+  scanFile: function (fileUri) {
+    return new Promise(function (successCallback, errorCallback) {
+      cordova.exec(
+        function () {
+          successCallback && successCallback();
+        },
+        function (error) {
+          errorCallback && errorCallback(error);
+        },
+        "MediaScanner",
+        "scanFile",
+        [fileUri]
+      );
+    });
   },
 };

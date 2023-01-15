@@ -1,4 +1,4 @@
-package br.com.brunogrossi.MediaScannerPlugin;
+package dejiren.cordova.environment;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -12,8 +12,7 @@ import android.net.Uri;
 import android.util.Log;
 import android.media.MediaScannerConnection;
 import android.media.MediaScannerConnection.MediaScannerConnectionClient;
-import 	android.webkit.MimeTypeMap;
-
+import android.webkit.MimeTypeMap;
 
 /*
 The MIT License (MIT)
@@ -39,52 +38,50 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-
 /**
- * MediaScannerPlugin.java
+ * MediaScanner.java
  *
- * @author Bruno E. Grossi <bruno@grossi.com.br>
+ * @author dejiren team
  */
-public class MediaScannerPlugin extends CordovaPlugin implements MediaScannerConnection.MediaScannerConnectionClient{
-    private static final String TAG = "MediaScannerPlugin";
+public class MediaScanner extends CordovaPlugin implements MediaScannerConnection.MediaScannerConnectionClient {
+    private static final String C_NAME = "MediaScanner";
     private MediaScannerConnection mMediaScannerConnection;
     private String mFilePath;
     private CallbackContext myCallbackContext;
+
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try {
             if (action.equals("scanFile")) {
                 String fileUri = args.optString(0);
                 mFilePath = args.getString(0).replace("file://", "");
-                if(fileUri!=null && !fileUri.equals("")) {
-                     if (android.os.Build.VERSION.SDK_INT < 29) {
+                if (fileUri != null && !fileUri.equals("")) {
+                    if (android.os.Build.VERSION.SDK_INT < 29) {
                         Uri contentUri = Uri.parse(fileUri);
-                    
+
                         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                         mediaScanIntent.setData(contentUri);
                         this.cordova.getActivity().sendBroadcast(mediaScanIntent);
-                    
+
                         callbackContext.success();
-        
+
                         return true;
 
-                     } else {
-                        mMediaScannerConnection = new MediaScannerConnection(this.cordova.getActivity().getApplicationContext(), this);
+                    } else {
+                        mMediaScannerConnection = new MediaScannerConnection(
+                                this.cordova.getActivity().getApplicationContext(), this);
                         myCallbackContext = callbackContext;
                         mMediaScannerConnection.connect();
-                        // String successMsg = "scanFile Success";
-                        // callbackContext.success(successMsg);
                         return true;
-                    
-                    
-                     }
+
+                    }
                 } else {
-                    Log.w(TAG, "No action param provided: "+action);
-                    callbackContext.error("No action param provided: "+action);
+                    Log.w(C_NAME, "need file uri: " + action);
+                    callbackContext.error("No action param: " + action);
                     return false;
                 }
             } else {
-                Log.w(TAG, "Wrong action was provided: "+action);
+                Log.w(C_NAME, "Wrong action: " + action);
                 return false;
             }
         } catch (RuntimeException e) {
@@ -104,7 +101,7 @@ public class MediaScannerPlugin extends CordovaPlugin implements MediaScannerCon
     public void onScanCompleted(String s, Uri uri) {
         mMediaScannerConnection.disconnect();
         String successMsg = "scanFile Success";
-        if(myCallbackContext != null ) {
+        if (myCallbackContext != null) {
             myCallbackContext.success(successMsg);
         }
     }
