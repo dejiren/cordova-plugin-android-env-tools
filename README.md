@@ -29,7 +29,7 @@ From the Command line:
     cordova plugin add cordova-plugin-android-env-tools
 
 
-## From 
+## method
 
 ### notification setting manager
 window.cordova?.plugins.androidEnv.getNotificationChannel(channelId)
@@ -59,7 +59,7 @@ window.cordova.plugins.androidMediaScanner.scanFile(filePath)
 
 ## index.d.tsの作成について　　
 
-新たな修正が発生また新たな機能を導入するとき、以下の手順でコマンドを実行して、
+新たな修正が発生また新たな機能を導入するとき、以下の手順でコマンドを実行して、  
 作成されたtypes/xxxx.d.tsの内容により、index.d.tsを修正
 
  - npm install 
